@@ -25,43 +25,81 @@
 <body>
     <div class="container">
         <div class="row row-content" ng-init="
-                         dish=
+                         dishes=[
                          {
                            name:'Uthapizza',
                            image: 'images/uthapizza.png',
                            category: 'mains',
                            type: 'vegetarian',
-                           label:'Hot', 
+                           label:'Hot',
                            price:'4.99',
                            description:'A unique combination of Indian Uthappam 
                              (pancake) and Italian pizza, topped with Cerignola 
                              olives, ripe vine cherry tomatoes, Vidalia onion, 
                              Guntur chillies and Buffalo Paneer.',
                            comment: ''
-                        }">
+                        },
+                        {
+                           name:'Zucchipakoda',
+                           image: 'images/zucchipakoda.png',
+                           category: 'appetizer',
+                           type: 'vegan',
+                           label:'',
+                           price:'1.99',
+                           description:'Deep fried Zucchini coated with mildly 
+                             spiced Chickpea flour batter accompanied with a 
+                             sweet-tangy tamarind sauce',
+                           comment: ''
+                        },
+                        {
+                           name:'Vadonut',
+                           image: 'images/vadonut.png',
+                           category: 'appetizer',
+                           type: 'vegetarian',
+                           label:'New',
+                           price:'1.99',
+                           description:'A quintessential ConFusion experience, 
+                             is it a vada or is it a donut?',
+                           comment: ''
+                        },
+                        {
+                           name:'ElaiCheese Cake',
+                           image: 'images/elaicheesecake.png',
+                           category: 'dessert',
+                           type: 'vegetarian',
+                           label:'',
+                           price:'2.99',
+                           description:'A delectable, semi-sweet New York Style 
+                             Cheese Cake, with Graham cracker crust and spiced 
+                             with Indian cardamoms',
+                           comment: ''
+                        }
+                        ]">
             <div class="col-xs-12">
-                <div class="media">
-                    <div class="media-left media-top">
-                        <a href="#">
+                <ul class="media-list">
+                    <li class="media" ng-repeat="dish in dishes">
+                        <div class="media-left media-top">
+                            <a href="#">
                         <img class="media-object img-thumbnail"
                          ng-src={{dish.image}} alt="Uthappizza">
                         </a>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="media-heading">{{dish.name}}
+                        </div>
+                        <div class="media-body">
+                            <h2 class="media-heading">{{dish.name}}
                          <span class="label label-danger">{{dish.label}}</span>
                          <span class="badge">{{dish.price | currency}}</span
                            ></h2>
-                        <p>{{dish.description}}</p>
-                        <p>* {{dish.type}}</p>
-                    </div>
-                    <div class="media-bottom">
-                        <p>Comment: <span class="dish-comment">{{dish.comment}}</span></p>
-                        <p>Type your comment here:
-                            <input type="text" ng-model="dish.comment">
-                        </p>
-                    </div>
-                </div>
+                            <p>{{dish.description}}</p>
+                            <p>* {{dish.type}}</p>
+                        </div>
+                        <div class="media-bottom">
+                            <p>Comment: <span class="dish-comment">{{dish.comment}}</span></p>
+                            <p>Type your comment here:
+                                <input type="text" ng-model="dish.comment">
+                            </p>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </div>
