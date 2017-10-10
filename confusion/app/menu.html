@@ -30,6 +30,7 @@
                            name:'Uthapizza',
                            image: 'images/uthapizza.png',
                            category: 'mains',
+                           type: 'vegetarian',
                            label:'Hot', 
                            price:'4.99',
                            description:'A unique combination of Indian Uthappam 
@@ -52,6 +53,7 @@
                          <span class="badge">{{dish.price | currency}}</span
                            ></h2>
                         <p>{{dish.description}}</p>
+                        <p class="dish-type">* {{dish.type}}</p>
                     </div>
                 </div>
             </div>
