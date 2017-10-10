@@ -94,7 +94,8 @@ body {
   position: absolute;
   right: 0px;
 }
-.dish-type {
+.dish-comment {
   font: 0.9em;
   font-style: italic;
+  text-transform: capitalize;
 }
