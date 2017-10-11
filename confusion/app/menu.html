@@ -25,33 +25,32 @@
 <body>
     <div class="container">
         <div class="row row-content" ng-controller="menuController as menuCtrl">
-            <!-- testing $scope instead of controller as syntax -->
-            <div class="col-xs-12" ng-controller="testController"> 
-            <h2>{{ text }}</h2>
-                <ul class="media-list">
-                    <li class="media" ng-repeat="dish in menuCtrl.dishes">
-                        <div class="media-left media-top">
-                            <a href="#">
+            <div class="col-xs-12">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation"><a area-controls="all menu" role="tab">The menu</a></li>
+                    <li role="presentation"><a area-controls="appetisers" role="tab">Appetisers</a></li>
+                    <li role="presentation"><a area-controls="main" role="tab">Mains</a></li>
+                    <li role="presentation"><a area-controls="desserts" role="tab">Desserts</a></li>
+                </ul>
+                <div class="tab-content">
+                    <ul class="media-list tab-pane fade in active">
+                        <li class="media" ng-repeat="dish in menuCtrl.dishes">
+                            <div class="media-left media-top">
+                                <a href="#">
                         <img class="media-object img-thumbnail"
                          ng-src={{dish.image}} alt="Uthappizza">
                         </a>
-                        </div>
-                        <div class="media-body">
-                            <h2 class="media-heading">{{dish.name}}
+                            </div>
+                            <div class="media-body">
+                                <h2 class="media-heading">{{dish.name}}
                          <span class="label label-danger">{{dish.label}}</span>
                          <span class="badge">{{dish.price | currency}}</span
                            ></h2>
-                            <p>{{dish.description}}</p>
-                            <p>* {{dish.type}}</p>
-                        </div>
-                        <div class="media-bottom">
-                            <p>Comment: <span class="dish-comment">{{dish.comment}}</span></p>
-                            <p>Type your comment here:
-                                <input type="text" ng-model="dish.comment">
-                            </p>
-                        </div>
-                    </li>
-                </ul>
+                                <p>{{dish.description}}</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -105,9 +104,9 @@
         this.dishes = dishes;
     });
 
-    app.controller('testController', ['$scope', function($scope) {
-        $scope.text = 'Our Menu';
-    }]);
+    // app.controller('testController', ['$scope', function($scope) {
+    //     $scope.text = 'Our Menu';
+    // }]);
     </script>
 </body>
 
