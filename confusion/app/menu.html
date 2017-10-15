@@ -43,7 +43,7 @@
                 </ul>
                 <div class="tab-content">
                     <ul class="media-list tab-pane fade in active">
-                        <li class="media" ng-repeat="dish in menuCtrl.dishes">
+                        <li class="media" ng-repeat="dish in menuCtrl.dishes | filter:menuCtrl.filtText">
                             <div class="media-left media-top">
                                 <a href="#">
                         <img class="media-object img-thumbnail"
@@ -70,6 +70,8 @@
     app.controller('menuController', function() {
 
         this.tab = 1;
+        this.filtText = '';
+
 
         var dishes = [{
                 name: 'Uthapizza',
@@ -117,10 +119,22 @@
 
         this.select = function(setTab) {
             this.tab = setTab;
-            return this.tab;
+            switch (setTab) {
+                case 2:
+                    this.filtText = 'appetizer';
+                    break
+                case 3:
+                    this.filtText = 'mains';
+                    break
+                case 4:
+                    this.filtText = 'dessert';
+                    break;
+                default:
+                    this.filtText = '';
+            }
         }
 
-        this.isSelected = function (checkTab) {
+        this.isSelected = function(checkTab) {
             return (this.tab === checkTab);
         }
 
