@@ -99,3 +99,11 @@ body {
   font-style: italic;
   text-transform: capitalize;
 }
+
+a, a:focus, a:hover{
+  color: #555;
+}
+
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover {
+  color: #d9534f ;
+}
