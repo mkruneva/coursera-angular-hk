@@ -54,6 +54,9 @@
                     </ul>
                     <div class="comments offset">
                         <h4>Customer Comments</h4>
+                        <p>Sort By</p>
+                        <input type="text" ng-model="menuCtrl.sortWord">
+                        <p>{{menuCtrl.sortWord}}</p>
                         <div ng-repeat="comment in menuCtrl.dish.comments">
                             <blockquote>
                                 <h3>{{comment.rating}} Stars</h3>
@@ -87,6 +90,8 @@
     <script>
     var app = angular.module('confusionApp', []);
     app.controller('menuController', function() {
+
+        var sortWord = '';
 
         var dish = {
             name: 'Uthapizza',
@@ -129,6 +134,7 @@
         }
 
         this.dish = dish;
+
     });
 
     // app.controller('testController', ['$scope', function($scope) {
