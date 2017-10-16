@@ -52,11 +52,18 @@
                             </div>
                         </li>
                     </ul>
+                    <div class="comments offset">
+                        <h4>Customer Comments</h4>
+                        <div ng-repeat="comment in menuCtrl.dish.comments">
+                            <blockquote>
+                                <h3>{{comment.rating}} Stars</h3>
+                                <q>{{comment.comment}}</q>
+                                <p>{{comment.author}}, {{comment.date | date}}</p>
+                            </blockquote>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="col-xs-9 col-xs-offset-1">
-            <p>Put the comments here</p>
         </div>
         <!-- tasks for assignement 2  -->
         <!-- <div class="col-xs-9 col-xs-offset-1" ng-controller="DishCommentController">
