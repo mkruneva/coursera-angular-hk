@@ -45,7 +45,7 @@
                     <ul class="media-list tab-pane fade in active">
                         <li class="media" ng-repeat="dish in menuCtrl.dishes | filter:menuCtrl.filtText">
                             <div class="media-left media-top">
-                                <a href="dishdetail.html" data-toggle="tooltip" title="More details">
+                                <a href="#" ng-click="menuCtrl.selectDish()" data-toggle="tooltip" name="{{dish.name}}">
                         <img class="media-object img-thumbnail"
                          ng-src={{dish.image}} alt="Uthappizza">
                         </a>
@@ -56,6 +56,21 @@
                          <span class="badge">{{dish.price | currency}}</span
                            ></h2>
                                 <p>{{dish.description}}</p>
+                            </div>
+                            <div class="comments offset">
+                                <a href="#" ng-click="menuCtrl.showHide()"><h5>Customer Comments &#9660;</h5></a>
+                                <div id="comments">
+                                    <p>Sort By <span>(rating, comment or author)</span></p>
+                                    <input type="text" ng-model="menuCtrl.sortWord">
+                                    <p>{{menuCtrl.sortWord}}</p>
+                                    <div ng-repeat="comment in dish.comments | orderBy: menuCtrl.sortWord">
+                                        <blockquote>
+                                            <h3>{{comment.rating}} Stars</h3>
+                                            <q>{{comment.comment}}</q>
+                                            <p>{{comment.author}}, {{comment.date | date}}</p>
+                                        </blockquote>
+                                    </div>
+                                </div>
                             </div>
                         </li>
                     </ul>
@@ -70,8 +85,9 @@
     app.controller('menuController', function() {
 
         this.tab = 1;
+        this.dishName = '';
         this.filtText = '';
-
+        this.sortWord = '';
 
         var dishes = [{
                 name: 'Uthapizza',
@@ -81,7 +97,37 @@
                 label: 'Hot',
                 price: '4.99',
                 description: 'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.',
-                comment: ''
+                comments: [{
+                        rating: 5,
+                        comment: 'Wonderful pizza',
+                        author: 'me myself and I',
+                        date: '2017-05-01'
+                    },
+                    {
+                        rating: 2,
+                        comment: 'Awful pizza',
+                        author: 'you yourself and You',
+                        date: '2017-07-01'
+                    },
+                    {
+                        rating: 3,
+                        comment: 'Alright pizza',
+                        author: 'Brumm',
+                        date: '2017-03-01'
+                    },
+                    {
+                        rating: 1,
+                        comment: 'No way',
+                        author: 'Slon',
+                        date: '2017-03-20'
+                    },
+                    {
+                        rating: 4,
+                        comment: 'Not bad at all',
+                        author: 'Him',
+                        date: '2017-09-20'
+                    }
+                ]
             },
             {
                 name: 'Zucchipakoda',
@@ -91,7 +137,37 @@
                 label: '',
                 price: '1.99',
                 description: 'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce',
-                comment: ''
+                comments: [{
+                        rating: 5,
+                        comment: 'Wonderful dish',
+                        author: 'Simon',
+                        date: '2017-05-01'
+                    },
+                    {
+                        rating: 2,
+                        comment: 'Awful meal',
+                        author: 'John',
+                        date: '2017-07-01'
+                    },
+                    {
+                        rating: 3,
+                        comment: 'Alright',
+                        author: 'Brumm',
+                        date: '2017-03-01'
+                    },
+                    {
+                        rating: 1,
+                        comment: 'No way',
+                        author: 'Slon',
+                        date: '2017-03-20'
+                    },
+                    {
+                        rating: 4,
+                        comment: 'Not bad at all',
+                        author: 'Him',
+                        date: '2017-09-20'
+                    }
+                ]
             },
             {
                 name: 'Vadonut',
@@ -101,7 +177,37 @@
                 label: 'New',
                 price: '1.99',
                 description: 'A quintessential ConFusion experience, is it a vada or is it a donut?',
-                comment: ''
+                comments: [{
+                        rating: 5,
+                        comment: 'Wonderful appetizer',
+                        author: 'me myself and I',
+                        date: '2017-05-01'
+                    },
+                    {
+                        rating: 2,
+                        comment: 'Awful appetizer',
+                        author: 'you yourself and You',
+                        date: '2017-07-01'
+                    },
+                    {
+                        rating: 3,
+                        comment: 'Alright appetizer',
+                        author: 'Brumm',
+                        date: '2017-03-01'
+                    },
+                    {
+                        rating: 1,
+                        comment: 'No way',
+                        author: 'Slon',
+                        date: '2017-03-20'
+                    },
+                    {
+                        rating: 4,
+                        comment: 'Not bad at all',
+                        author: 'Him',
+                        date: '2017-09-20'
+                    }
+                ]
             },
             {
                 name: 'ElaiCheese Cake',
@@ -111,7 +217,37 @@
                 label: '',
                 price: '2.99',
                 description: 'A delectable, semi-sweet New York Style  Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms',
-                comment: ''
+                comments: [{
+                        rating: 5,
+                        comment: 'Wonderful cake',
+                        author: 'me myself and I',
+                        date: '2017-05-01'
+                    },
+                    {
+                        rating: 2,
+                        comment: 'Awful cake',
+                        author: 'you yourself and You',
+                        date: '2017-07-01'
+                    },
+                    {
+                        rating: 3,
+                        comment: 'Alright cake',
+                        author: 'Brumm',
+                        date: '2017-03-01'
+                    },
+                    {
+                        rating: 1,
+                        comment: 'No way',
+                        author: 'Slon',
+                        date: '2017-03-20'
+                    },
+                    {
+                        rating: 4,
+                        comment: 'Not bad at all',
+                        author: 'Him',
+                        date: '2017-09-20'
+                    }
+                ]
             }
         ];
 
@@ -136,6 +272,22 @@
 
         this.isSelected = function(checkTab) {
             return (this.tab === checkTab);
+        }
+
+        this.selectDish = function(e) {
+            e = e || window.event;
+            var target = e.target || e.srcElement;
+            this.dishName = target.parentElement.name;
+            console.log(this.dishName);
+        }
+
+        this.showHide = function() {
+            var x = document.getElementById("comments");
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
         }
 
     });
