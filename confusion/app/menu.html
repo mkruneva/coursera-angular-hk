@@ -45,7 +45,7 @@
                     <ul class="media-list tab-pane fade in active">
                         <li class="media" ng-repeat="dish in menuCtrl.dishes | filter:menuCtrl.filtText">
                             <div class="media-left media-top">
-                                <a href="#" ng-click="menuCtrl.selectDish()" data-toggle="tooltip" name="{{dish.name}}">
+                                <a href="#"" data-toggle="tooltip" name="{{dish.name}}">
                         <img class="media-object img-thumbnail"
                          ng-src={{dish.image}} alt="Uthappizza">
                         </a>
@@ -58,8 +58,9 @@
                                 <p>{{dish.description}}</p>
                             </div>
                             <div class="comments offset">
-                                <a href="#" ng-click="menuCtrl.showHide()"><h5>Customer Comments &#9660;</h5></a>
-                                <div id="comments">
+                                <a href="#" ng-click="menuCtrl.selectDish($index)" class="comments"><h5>Customer Comments &#9660;</h5></a>
+                                <p>dish showComment property for each element: {{dish.showComment}}</p>
+                                <div ng-show="{{menuCtrl.showOrNot}}">
                                     <p>Sort By <span>(rating, comment or author)</span></p>
                                     <input type="text" ng-model="menuCtrl.sortWord">
                                     <p>{{menuCtrl.sortWord}}</p>
@@ -88,6 +89,7 @@
         this.dishName = '';
         this.filtText = '';
         this.sortWord = '';
+        this.showOrNot = false;
 
         var dishes = [{
                 name: 'Uthapizza',
@@ -97,6 +99,7 @@
                 label: 'Hot',
                 price: '4.99',
                 description: 'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.',
+                showComment: false,
                 comments: [{
                         rating: 5,
                         comment: 'Wonderful pizza',
@@ -137,6 +140,7 @@
                 label: '',
                 price: '1.99',
                 description: 'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce',
+                showComment: false,
                 comments: [{
                         rating: 5,
                         comment: 'Wonderful dish',
@@ -177,6 +181,7 @@
                 label: 'New',
                 price: '1.99',
                 description: 'A quintessential ConFusion experience, is it a vada or is it a donut?',
+                showComment: false,
                 comments: [{
                         rating: 5,
                         comment: 'Wonderful appetizer',
@@ -217,6 +222,7 @@
                 label: '',
                 price: '2.99',
                 description: 'A delectable, semi-sweet New York Style  Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms',
+                showComment: false,
                 comments: [{
                         rating: 5,
                         comment: 'Wonderful cake',
@@ -274,20 +280,15 @@
             return (this.tab === checkTab);
         }
 
-        this.selectDish = function(e) {
-            e = e || window.event;
-            var target = e.target || e.srcElement;
-            this.dishName = target.parentElement.name;
-            console.log(this.dishName);
-        }
-
-        this.showHide = function() {
-            var x = document.getElementById("comments");
-            if (x.style.display === "none") {
-                x.style.display = "block";
+        this.selectDish = function(index) {
+            this.showOrNot = true;
+            if (this.dishes[index].showComment === false) {
+                this.dishes[index].showComment = true;
             } else {
-                x.style.display = "none";
+                this.dishes[index].showComment = false;
             }
+
+            console.log(this.dishes[index].showComment);
         }
 
     });

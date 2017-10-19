@@ -125,10 +125,6 @@ blockquote>q {
   line-height: 150%;
 }
 
-#comments {
-  display: none;
-}
-
-#comments:hover, #comments:active, #comments:focus {
+.comments:hover, .comments:active, .comments:focus {
   text-decoration: none;
 }
