@@ -54,10 +54,10 @@
                     </ul>
                     <div class="comments offset">
                         <h4>Customer Comments</h4>
-                        <p>Sort By</p>
+                        <p>Sort By <span>(rating, comment or author)</span></p>
                         <input type="text" ng-model="menuCtrl.sortWord">
                         <p>{{menuCtrl.sortWord}}</p>
-                        <div ng-repeat="comment in menuCtrl.dish.comments">
+                        <div ng-repeat="comment in menuCtrl.dish.comments | orderBy: menuCtrl.sortWord">
                             <blockquote>
                                 <h3>{{comment.rating}} Stars</h3>
                                 <q>{{comment.comment}}</q>
