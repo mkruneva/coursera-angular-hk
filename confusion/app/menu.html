@@ -59,10 +59,8 @@
                             </div>
                             <div class="comments offset">
                                 <a href="#" ng-click="menuCtrl.selectDish($index)" class="comments"><h5>Customer Comments &#9660;</h5></a>
-                                <p>dish showComment property for each element: {{dish.showComment}}</p>
-                                <div ng-show="{{menuCtrl.showOrNot}}">
-                                    <p>Sort By <span>(rating, comment or author)</span></p>
-                                    <input type="text" ng-model="menuCtrl.sortWord">
+                                <div ng-show="dish.showComment" ng-class="display">
+                                    <p>Sort By <span>(rating, comment or author)   </span><input type="text" ng-model="menuCtrl.sortWord"></p> 
                                     <p>{{menuCtrl.sortWord}}</p>
                                     <div ng-repeat="comment in dish.comments | orderBy: menuCtrl.sortWord">
                                         <blockquote>
@@ -89,7 +87,6 @@
         this.dishName = '';
         this.filtText = '';
         this.sortWord = '';
-        this.showOrNot = false;
 
         var dishes = [{
                 name: 'Uthapizza',
