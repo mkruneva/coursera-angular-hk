@@ -117,12 +117,12 @@ module.exports = function(grunt) {
         'clean',
         'jshint',
         'useminPrepare',
-        // 'concat',
-        // 'cssmin',
-        // 'uglify',
+        'concat',
+        'cssmin',
+        'uglify',
         'copy',
-        // 'filerev',
-        // 'usemin'
+        'filerev',
+        'usemin'
     ]);
 
 
