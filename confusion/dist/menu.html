@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="confusionApp">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head
+         content must come *after* these tags -->
+    <title>Ristorante Con Fusion: Menu</title>
+    <!-- Bootstrap -->
+    <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="styles/bootstrap-social.css" rel="stylesheet">
+    <link href="styles/mystyles.css" rel="stylesheet">
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+    <div class="container">
+        <div class="row row-content" ng-controller="menuController as menuCtrl">
+            <div class="col-xs-12">
+                <!-- tabs  -->
+                <ul class="nav nav-tabs" role="tablist">
+                    <li ng-class="{active:menuCtrl.isSelected(1)}" role="presentation">
+                        <a ng-click="menuCtrl.select(1)" area-controls="all menu" role="tab">The menu</a>
+                    </li>
+                    <li ng-class="{active:menuCtrl.isSelected(2)}" role="presentation">
+                        <a ng-click="menuCtrl.select(2)" area-controls="appetisers" role="tab">Appetisers</a>
+                    </li>
+                    <li ng-class="{active:menuCtrl.isSelected(3)}" role="presentation">
+                        <a ng-click="menuCtrl.select(3)" area-controls="main" role="tab">Mains</a>
+                    </li>
+                    <li ng-class="{active:menuCtrl.isSelected(4)}" role="presentation">
+                        <a ng-click="menuCtrl.select(4)" area-controls="desserts" role="tab">Desserts</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <ul class="media-list tab-pane fade in active">
+                        <li class="media" ng-repeat="dish in menuCtrl.dishes | filter:menuCtrl.filtText">
+                            <div class="media-left media-top">
+                                <a href="#"" data-toggle="tooltip" name="{{dish.name}}">
+                        <img class="media-object img-thumbnail"
+                         ng-src={{dish.image}} alt="Uthappizza">
+                        </a>
+                            </div>
+                            <div class="media-body">
+                                <h2 class="media-heading">{{dish.name}}
+                         <span class="label label-danger">{{dish.label}}</span>
+                         <span class="badge">{{dish.price | currency}}</span
+                           ></h2>
+                                <p>{{dish.description}}</p>
+                            </div>
+                            <div class="comments offset">
+                                <a href="#" ng-click="menuCtrl.selectDish($index)" class="comments"><h5>Customer Comments &#9660;</h5></a>
+                                <div ng-show="dish.showComment" ng-class="display">
+                                    <p>Sort By <span>(rating, comment or author)   </span><input type="text" ng-model="menuCtrl.sortWords[$index]"></p> 
+                                    <p>{{menuCtrl.sortWord}}</p>
+                                    <div ng-repeat="comment in dish.comments | orderBy: menuCtrl.sortWords[$index]">
+                                        <blockquote>
+                                            <h3>{{comment.rating}} Stars</h3>
+                                            <q>{{comment.comment}}</q>
+                                            <p>{{comment.author}}, {{comment.date | date}}</p>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script>
+    var app = angular.module('confusionApp', []);
+    app.controller('menuController', function() {
+
+        this.tab = 1;
+        this.dishName = '';
+        this.filtText = '';
+        this.sortWords = [];
+
+        var dishes = [{
+                name: 'Uthapizza',
+                image: 'images/uthapizza.png',
+                category: 'mains',
+                type: 'vegetarian',
+                label: 'Hot',
+                price: '4.99',
+                description: 'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.',
+                showComment: false,
+                comments: [{
+                        rating: 5,
+                        comment: 'Wonderful pizza',
+                        author: 'me myself and I',
+                        date: '2017-05-01'
+                    },
+                    {
+                        rating: 2,
+                        comment: 'Awful pizza',
+                        author: 'you yourself and You',
+                        date: '2017-07-01'
+                    },
+                    {
+                        rating: 3,
+                        comment: 'Alright pizza',
+                        author: 'Brumm',
+                        date: '2017-03-01'
+                    },
+                    {
+                        rating: 1,
+                        comment: 'No way',
+                        author: 'Slon',
+                        date: '2017-03-20'
+                    },
+                    {
+                        rating: 4,
+                        comment: 'Not bad at all',
+                        author: 'Him',
+                        date: '2017-09-20'
+                    }
+                ]
+            },
+            {
+                name: 'Zucchipakoda',
+                image: 'images/zucchipakoda.png',
+                category: 'appetizer',
+                type: 'vegan',
+                label: '',
+                price: '1.99',
+                description: 'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce',
+                showComment: false,
+                comments: [{
+                        rating: 5,
+                        comment: 'Wonderful dish',
+                        author: 'Simon',
+                        date: '2017-05-01'
+                    },
+                    {
+                        rating: 2,
+                        comment: 'Awful meal',
+                        author: 'John',
+                        date: '2017-07-01'
+                    },
+                    {
+                        rating: 3,
+                        comment: 'Alright',
+                        author: 'Brumm',
+                        date: '2017-03-01'
+                    },
+                    {
+                        rating: 1,
+                        comment: 'No way',
+                        author: 'Slon',
+                        date: '2017-03-20'
+                    },
+                    {
+                        rating: 4,
+                        comment: 'Not bad at all',
+                        author: 'Him',
+                        date: '2017-09-20'
+                    }
+                ]
+            },
+            {
+                name: 'Vadonut',
+                image: 'images/vadonut.png',
+                category: 'appetizer',
+                type: 'vegetarian',
+                label: 'New',
+                price: '1.99',
+                description: 'A quintessential ConFusion experience, is it a vada or is it a donut?',
+                showComment: false,
+                comments: [{
+                        rating: 5,
+                        comment: 'Wonderful appetizer',
+                        author: 'me myself and I',
+                        date: '2017-05-01'
+                    },
+                    {
+                        rating: 2,
+                        comment: 'Awful appetizer',
+                        author: 'you yourself and You',
+                        date: '2017-07-01'
+                    },
+                    {
+                        rating: 3,
+                        comment: 'Alright appetizer',
+                        author: 'Brumm',
+                        date: '2017-03-01'
+                    },
+                    {
+                        rating: 1,
+                        comment: 'No way',
+                        author: 'Slon',
+                        date: '2017-03-20'
+                    },
+                    {
+                        rating: 4,
+                        comment: 'Not bad at all',
+                        author: 'Him',
+                        date: '2017-09-20'
+                    }
+                ]
+            },
+            {
+                name: 'ElaiCheese Cake',
+                image: 'images/elaicheesecake.png',
+                category: 'dessert',
+                type: 'vegetarian',
+                label: '',
+                price: '2.99',
+                description: 'A delectable, semi-sweet New York Style  Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms',
+                showComment: false,
+                comments: [{
+                        rating: 5,
+                        comment: 'Wonderful cake',
+                        author: 'me myself and I',
+                        date: '2017-05-01'
+                    },
+                    {
+                        rating: 2,
+                        comment: 'Awful cake',
+                        author: 'you yourself and You',
+                        date: '2017-07-01'
+                    },
+                    {
+                        rating: 3,
+                        comment: 'Alright cake',
+                        author: 'Brumm',
+                        date: '2017-03-01'
+                    },
+                    {
+                        rating: 1,
+                        comment: 'No way',
+                        author: 'Slon',
+                        date: '2017-03-20'
+                    },
+                    {
+                        rating: 4,
+                        comment: 'Not bad at all',
+                        author: 'Him',
+                        date: '2017-09-20'
+                    }
+                ]
+            }
+        ];
+
+        this.dishes = dishes;
+
+        this.select = function(setTab) {
+            this.tab = setTab;
+            switch (setTab) {
+                case 2:
+                    this.filtText = 'appetizer';
+                    break;
+                case 3:
+                    this.filtText = 'mains';
+                    break;
+                case 4:
+                    this.filtText = 'dessert';
+                    break;
+                default:
+                    this.filtText = '';
+            }
+        };
+
+        this.isSelected = function(checkTab) {
+            return (this.tab === checkTab);
+        };
+
+        this.selectDish = function(index) {
+            this.showOrNot = true;
+            if (this.dishes[index].showComment === false) {
+                this.dishes[index].showComment = true;
+            } else {
+                this.dishes[index].showComment = false;
+            }
+
+            console.log(this.dishes[index].showComment);
+        };
+
+    });
+
+    // app.controller('testController', ['$scope', function($scope) {
+    //     $scope.text = 'Our Menu';
+    // }]);
+    </script>
+</body>
+
+</html>
