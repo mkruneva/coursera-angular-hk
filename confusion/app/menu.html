@@ -60,9 +60,9 @@
                             <div class="comments offset">
                                 <a href="#" ng-click="menuCtrl.selectDish($index)" class="comments"><h5>Customer Comments &#9660;</h5></a>
                                 <div ng-show="dish.showComment" ng-class="display">
-                                    <p>Sort By <span>(rating, comment or author)   </span><input type="text" ng-model="menuCtrl.sortWord"></p> 
+                                    <p>Sort By <span>(rating, comment or author)   </span><input type="text" ng-model="menuCtrl.sortWords[$index]"></p> 
                                     <p>{{menuCtrl.sortWord}}</p>
-                                    <div ng-repeat="comment in dish.comments | orderBy: menuCtrl.sortWord">
+                                    <div ng-repeat="comment in dish.comments | orderBy: menuCtrl.sortWords[$index]">
                                         <blockquote>
                                             <h3>{{comment.rating}} Stars</h3>
                                             <q>{{comment.comment}}</q>
@@ -87,6 +87,7 @@
         this.dishName = '';
         this.filtText = '';
         this.sortWord = '';
+        this.sortWords = [];
 
         var dishes = [{
                 name: 'Uthapizza',
@@ -261,21 +262,21 @@
             switch (setTab) {
                 case 2:
                     this.filtText = 'appetizer';
-                    break
+                    break;
                 case 3:
                     this.filtText = 'mains';
-                    break
+                    break;
                 case 4:
                     this.filtText = 'dessert';
                     break;
                 default:
                     this.filtText = '';
             }
-        }
+        };
 
         this.isSelected = function(checkTab) {
             return (this.tab === checkTab);
-        }
+        };
 
         this.selectDish = function(index) {
             this.showOrNot = true;
@@ -286,7 +287,7 @@
             }
 
             console.log(this.dishes[index].showComment);
-        }
+        };
 
     });
 
