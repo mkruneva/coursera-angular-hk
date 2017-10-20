@@ -128,3 +128,11 @@ blockquote>q {
 .comments:hover, .comments:active, .comments:focus {
   text-decoration: none;
 }
+
+.nav-tabs a {
+  cursor: pointer;
+}
+
+.media-left>a, .media-top>a  {
+  cursor: default;
+}
