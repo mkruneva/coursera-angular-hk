@@ -41,19 +41,8 @@ gulp.task('usemin', ['jshint'], function() {
 });
 
 // Images
-// gulp.task('imagemin', function() {
-//     return del(['build/images']), gulp.src('app/images/**/*')
-//         .pipe(cache(imagemin({
-//             optimizationLevel: 3,
-//             progressive: true,
-//             interlaced: true
-//         })))
-//         .pipe(gulp.dest('build/images'))
-//         .pipe(notify({ message: 'Images task complete' }));
-// });
-
 gulp.task('imagemin', function() {
-    return gulp.src('app/images/**/*')
+    return del(['build/images']), gulp.src('app/images/**/*')
         .pipe(imagemin({
             optimizationLevel: 3,
             progressive: true,
@@ -78,7 +67,7 @@ gulp.task('watch', ['browser-sync'], function() {
     gulp.watch('app/images/**/*', ['imagemin']);
 });
 
-// Browser-Sync task
+//Browser-sync
 gulp.task('browser-sync', ['default'], function() {
     var files = [
         'app/**/*.html',
@@ -91,7 +80,8 @@ gulp.task('browser-sync', ['default'], function() {
         server: {
             baseDir: "build",
             index: "menu.html"
-        }
+        },
+        port: 3010
     });
     // Watch any files in build/, reload on change
     gulp.watch(['build/**']).on('change', browserSync.reload);
