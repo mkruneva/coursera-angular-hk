@@ -136,3 +136,15 @@ blockquote>q {
 .media-left>a, .media-top>a  {
   cursor: default;
 }
+
+
+div.comments-div {
+    max-height: 800px;
+    overflow: hidden;
+    transition: 0.8s;
+    transition-timing-function: ease-in-out;
+}
+
+div.comments-div.display-class {
+    max-height: 0px;
+}

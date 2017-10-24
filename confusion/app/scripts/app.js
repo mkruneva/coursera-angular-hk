@@ -15,7 +15,6 @@ angular.module('confusionApp', []).controller('menuController', function() {
             label: 'Hot',
             price: '4.99',
             description: 'A unique combination of Indian Uthappam (pancake) and Italian pizza, topped with Cerignola olives, ripe vine cherry tomatoes, Vidalia onion, Guntur chillies and Buffalo Paneer.',
-            showComment: false,
             comments: [{
                     rating: 5,
                     comment: 'Wonderful pizza',
@@ -56,7 +55,6 @@ angular.module('confusionApp', []).controller('menuController', function() {
             label: '',
             price: '1.99',
             description: 'Deep fried Zucchini coated with mildly spiced Chickpea flour batter accompanied with a sweet-tangy tamarind sauce',
-            showComment: false,
             comments: [{
                     rating: 5,
                     comment: 'Wonderful dish',
@@ -97,7 +95,6 @@ angular.module('confusionApp', []).controller('menuController', function() {
             label: 'New',
             price: '1.99',
             description: 'A quintessential ConFusion experience, is it a vada or is it a donut?',
-            showComment: false,
             comments: [{
                     rating: 5,
                     comment: 'Wonderful appetizer',
@@ -138,7 +135,6 @@ angular.module('confusionApp', []).controller('menuController', function() {
             label: '',
             price: '2.99',
             description: 'A delectable, semi-sweet New York Style  Cheese Cake, with Graham cracker crust and spiced with Indian cardamoms',
-            showComment: false,
             comments: [{
                     rating: 5,
                     comment: 'Wonderful cake',
@@ -194,17 +190,6 @@ angular.module('confusionApp', []).controller('menuController', function() {
 
     this.isSelected = function(checkTab) {
         return (this.tab === checkTab);
-    };
-
-    this.selectDish = function(index) {
-        this.showOrNot = true;
-        if (this.dishes[index].showComment === false) {
-            this.dishes[index].showComment = true;
-        } else {
-            this.dishes[index].showComment = false;
-        }
-
-        console.log(this.dishes[index].showComment);
     };
 
 });
