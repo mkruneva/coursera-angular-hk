@@ -1,11 +1,45 @@
 'use strict';
 
-angular.module('confusionApp', []).controller('menuController', function() {
+angular.module('confusionApp', [])
+    .controller('menuController', menuController)
+    .service('menuControllerService', menuControllerService);
 
-    this.tab = 1;
-    this.dishName = '';
-    this.filtText = '';
-    this.sortWords = [];
+menuController.$inject = ['menuControllerService'];
+function menuController(menuControllerService) {
+
+    var menuController = this;
+
+    menuController.dishes = menuControllerService.showDishes();
+
+    menuController.tab = 1;
+    menuController.dishName = '';
+    menuController.filtText = '';
+    menuController.sortWords = [];
+
+    menuController.select = function(setTab) {
+        this.tab = setTab;
+        switch (setTab) {
+            case 2:
+                this.filtText = 'appetizer';
+                break;
+            case 3:
+                this.filtText = 'mains';
+                break;
+            case 4:
+                this.filtText = 'dessert';
+                break;
+            default:
+                this.filtText = '';
+        }
+    };
+
+    menuController.isSelected = function(checkTab) {;
+        return (this.tab === checkTab);
+    };
+}
+
+function menuControllerService() {
+    var service = this;
 
     var dishes = [{
             name: 'Uthapizza',
@@ -169,27 +203,7 @@ angular.module('confusionApp', []).controller('menuController', function() {
         }
     ];
 
-    this.dishes = dishes;
-
-    this.select = function(setTab) {
-        this.tab = setTab;
-        switch (setTab) {
-            case 2:
-                this.filtText = 'appetizer';
-                break;
-            case 3:
-                this.filtText = 'mains';
-                break;
-            case 4:
-                this.filtText = 'dessert';
-                break;
-            default:
-                this.filtText = '';
-        }
-    };
-
-    this.isSelected = function(checkTab) {
-        return (this.tab === checkTab);
-    };
-
-});
+    service.showDishes = function() {
+        return dishes;
+    }
+}
