@@ -16,6 +16,9 @@ function menuController(menuControllerService) {
     menuController.filtText = '';
     menuController.sortWords = [];
 
+    // menuController.select = menuControllerService.selectTab();
+    // menuController.isSelected = menuControllerService.isTabSelected();
+
     menuController.select = function(setTab) {
         this.tab = setTab;
         switch (setTab) {
@@ -40,6 +43,11 @@ function menuController(menuControllerService) {
 
 function menuControllerService() {
     var service = this;
+
+    // var tab = 1;
+    // var dishName = '';
+    // var filtText = '';
+    // var sortWords = [];
 
     var dishes = [{
             name: 'Uthapizza',
@@ -206,4 +214,25 @@ function menuControllerService() {
     service.showDishes = function() {
         return dishes;
     }
+
+    // service.selectTab = function(setTab) {
+    //     this.tab = setTab;
+    //     switch (setTab) {
+    //         case 2:
+    //             this.filtText = 'appetizer';
+    //             break;
+    //         case 3:
+    //             this.filtText = 'mains';
+    //             break;
+    //         case 4:
+    //             this.filtText = 'dessert';
+    //             break;
+    //         default:
+    //             this.filtText = '';
+    //     }
+    // };
+
+    // service.isTabSelected = function(checkTab) {;
+    //     return (this.tab === checkTab);
+    // };
 }
