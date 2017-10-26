@@ -14,11 +14,11 @@ angular.module('confusionApp', [])
      $scope.returnDish = function(index) {
         console.log(menuFactory.getDish(index));
         return menuFactory.getDish(index); 
-    }
+    };
     
     $scope.toggleDetails = function () {
         $scope.showDishDetails = !$scope.showDishDetails;
-    }
+    };
 
     $scope.select = function(setTab) {
         this.tab = setTab;
