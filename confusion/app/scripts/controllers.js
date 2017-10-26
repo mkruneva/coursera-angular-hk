@@ -11,6 +11,11 @@ angular.module('confusionApp', [])
 
     $scope.dishes = menuFactory.getDishes();
 
+     $scope.returnDish = function(index) {
+        console.log(menuFactory.getDish(index));
+        return menuFactory.getDish(index); 
+    }
+    
     $scope.toggleDetails = function () {
         $scope.showDishDetails = !$scope.showDishDetails;
     }
@@ -35,5 +40,7 @@ angular.module('confusionApp', [])
     $scope.isSelected = function(checkTab) {
         return (this.tab === checkTab);
     };
+
+   
 
 }]);
