@@ -16,9 +16,6 @@ function menuController(menuControllerService) {
     menuController.filtText = '';
     menuController.sortWords = [];
 
-    // menuController.select = menuControllerService.selectTab();
-    // menuController.isSelected = menuControllerService.isTabSelected();
-
     menuController.select = function(setTab) {
         this.tab = setTab;
         switch (setTab) {
@@ -36,18 +33,13 @@ function menuController(menuControllerService) {
         }
     };
 
-    menuController.isSelected = function(checkTab) {;
+    menuController.isSelected = function(checkTab) {
         return (this.tab === checkTab);
     };
 }
 
 function menuControllerService() {
     var service = this;
-
-    // var tab = 1;
-    // var dishName = '';
-    // var filtText = '';
-    // var sortWords = [];
 
     var dishes = [{
             name: 'Uthapizza',

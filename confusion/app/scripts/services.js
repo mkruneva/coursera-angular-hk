@@ -171,13 +171,13 @@ angular.module('confusionApp', [])
 
         menufac.showDishes = function() {
             return dishes;
-        }
+        };
 
         menufac.getDish = function(index) {
             return dishes[index];
-        }
+        };
 
         return function name() {
 
         };
-    })
+    });

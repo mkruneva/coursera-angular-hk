@@ -28,7 +28,7 @@
 
 <body>
     <div class="container">
-        <div class="row row-content" ng-controller="menuController as menuCtrl">
+        <div class="row row-content" ng-controller="menuController">
             <div class="col-xs-12">
                 <!-- tabs  -->
                 <ul class="nav nav-tabs" role="tablist">
@@ -38,7 +38,7 @@
                 </ul>
                 <div class="tab-content">
                     <ul class="media-list tab-pane fade in active">
-                        <li class="media" ng-repeat="dish in menuCtrl.dishes | filter:menuCtrl.filtText">
+                        <li class="media" ng-repeat="dish in dishes | filter:filtText">
                             <div class="media-left media-top">
                                 <a href="#"" data-toggle="tooltip" name="{{dish.name}}">
                         <img class="media-object img-thumbnail"
@@ -55,9 +55,9 @@
                             <div class="comments offset">
                                 <a href="#" ng-click="showDetails = ! showDetails" class="comments"><h5>Customer Comments &#9660;</h5></a>
                                 <div class="comments-div" ng-class="{ 'display-class': ! showDetails }">
-                                    <p>Sort By <span>(rating, comment or author)   </span><input type="text" ng-model="menuCtrl.sortWords[$index]"></p> 
-                                    <p>{{menuCtrl.sortWord}}</p>
-                                    <div ng-repeat="comment in dish.comments | orderBy: menuCtrl.sortWords[$index]">
+                                    <p>Sort By <span>(rating, comment or author)   </span><input type="text" ng-model="sortWords[$index]"></p> 
+                                    <p>{{sortWord}}</p>
+                                    <div ng-repeat="comment in dish.comments | orderBy: sortWords[$index]">
                                         <blockquote>
                                             <h3>{{comment.rating}} Stars</h3>
                                             <q>{{comment.comment}}</q>
