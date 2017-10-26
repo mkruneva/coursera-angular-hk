@@ -32,6 +32,9 @@
             <div class="col-xs-12">
                 <!-- tabs  -->
                 <ul class="nav nav-tabs" role="tablist">
+                <button ng-click="toggleDetails()" class="btn btn-sm btn-default pull-right" type="button">
+                    {{showDishDetails ? 'Hide details':'Show Details'}}
+                </button>
                     <li ng-class="{active:isSelected(1)}" role="presentation">
                         <a ng-click="select(1)" area-controls="all menu" role="tab">The menu</a>
                     </li>
@@ -59,10 +62,10 @@
                          <span class="label label-danger">{{dish.label}}</span>
                          <span class="badge">{{dish.price | currency}}</span
                            ></h2>
-                                <p>{{dish.description}}</p>
+                                <p ng-show="showDishDetails">{{dish.description}}</p>
                             </div>
                             <div class="comments offset">
-                                <a href="#" ng-click="showDetails = ! showDetails" class="comments"><h5>Customer Comments &#9660;</h5></a>
+                                <a href="#" tagret="_blank" ng-click="showDetails = ! showDetails" class="comments"><h5>Customer Comments &#9660;</h5></a>
                                 <div class="comments-div" ng-class="{ 'display-class': ! showDetails }">
                                     <p>Sort By <span>(rating, comment or author)   </span><input type="text" ng-model="sortWords[$index]"></p> 
                                     <p>{{sortWord}}</p>

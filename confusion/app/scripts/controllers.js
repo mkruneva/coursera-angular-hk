@@ -7,6 +7,7 @@ angular.module('confusionApp', [])
     $scope.dishName = '';
     $scope.filtText = '';
     $scope.sortWords = [];
+    $scope.showDishDetails = false;
 
     // to be removed after using service 
 
@@ -173,6 +174,10 @@ angular.module('confusionApp', [])
     ];
 
     // end of the part to be romeved
+
+    $scope.toggleDetails = function () {
+        $scope.showDishDetails = !$scope.showDishDetails;
+    }
 
     $scope.select = function(setTab) {
         this.tab = setTab;
