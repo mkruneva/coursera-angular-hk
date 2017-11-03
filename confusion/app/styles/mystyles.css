@@ -133,9 +133,9 @@ blockquote>q {
   cursor: pointer;
 }
 
-.media-left>a, .media-top>a  {
+/* .media-left>a, .media-top>a  {
   cursor: default;
-}
+} */
 
 
 div.comments-div {

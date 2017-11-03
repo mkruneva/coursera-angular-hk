@@ -23,10 +23,9 @@
                 <ul class="media-list tab-pane fade in active">
                     <li class="media" ng-repeat="dish in dishes | filter:filtText">
                         <div class="media-left media-top">
-                            <a href="#" ng-click="returnDish($index)" data-toggle="tooltip" name="{{dish.name}}">
-                            <img class="media-object img-thumbnail"
-                         ng-src={{dish.image}} alt="Uthappizza">
-                        </a>
+                            <a href="#/menu/{{dish._id}}" ng-click="returnDish($index)" data-toggle="tooltip" name="{{dish.name}}">
+                                <img class="media-object img-thumbnail" ng-src={{dish.image}} alt="Uthappizza">
+                            </a>
                         </div>
                         <div class="media-body">
                             <h2 class="media-heading">{{dish.name}}
