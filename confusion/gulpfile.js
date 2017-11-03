@@ -61,8 +61,8 @@ gulp.task('copyfonts', ['clean'], function() {
 
 // Copy temp
 gulp.task('copytemplates', ['clean'], function() {
-    gulp.src('app/templates/*.html')
-        .pipe(gulp.dest('./build/templates'));
+    gulp.src('app/views/*.html')
+        .pipe(gulp.dest('./build/views'));
 
 });
 
