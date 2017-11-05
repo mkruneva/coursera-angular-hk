@@ -11,6 +11,12 @@ angular.module('confusionApp', [])
 
     }])
 
+    .controller('DishCommentController', [function() {
+
+        // DishCommentController 
+
+    }])
+
 
     .controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory) {
 
