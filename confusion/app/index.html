@@ -27,15 +27,6 @@
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" ui-sref="app"><img src="images/logo.png" height=30 width=41></a>
-            </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li><a ui-sref="app">
@@ -50,6 +41,8 @@
             </div>
         </div>
     </nav>
+
+    <div ng-include="'views/menu.html'" scope="" onload=""></div>
 
     <!-- build:js scripts/main.js -->
     <script src="../bower_components/angular/angular.min.js"></script>
