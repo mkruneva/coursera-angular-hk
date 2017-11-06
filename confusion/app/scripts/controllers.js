@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('confusionApp', [])
+angular.module('confusionApp')
 
     .controller('DishDetailController', ['$scope', 'menuFactory', function($scope, menuFactory) {
 
@@ -17,6 +17,18 @@ angular.module('confusionApp', [])
 
     }])
 
+    .controller('ContactController', [function() {
+
+        // DishCommentController 
+
+    }])
+
+     .controller('AboutController', [function() {
+
+        // DishCommentController 
+
+    }])
+
 
     .controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory) {
 
@@ -27,6 +39,10 @@ angular.module('confusionApp', [])
         $scope.showDishDetails = false;
 
         $scope.dishes = menuFactory.getDishes();
+
+        $scope.clickMe = function() {
+            console.log('Click!');
+        }
 
         $scope.returnDish = function(index) {
             console.log(menuFactory.getDish(index));
