@@ -42,7 +42,7 @@ angular.module('confusionApp')
 
         $scope.clickMe = function() {
             console.log('Click!');
-        }
+        };
 
         $scope.returnDish = function(index) {
             console.log(menuFactory.getDish(index));
