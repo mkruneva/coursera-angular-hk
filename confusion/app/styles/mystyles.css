@@ -2,7 +2,7 @@
   border-radius: 0;
 }
 
-.panel, .well, .label, .badge, .btn, 
+.panel, .well, .label, .badge, .btn, .form-control, .input-group-addon, 
 .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover,
 .nav-tabs>li>a {
   border-radius: 0;
