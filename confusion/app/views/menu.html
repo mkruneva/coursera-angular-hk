@@ -1,47 +1,46 @@
 <div class="container">
     <div class="row row-content" ng-controller="MenuController">
-            <!-- tabs  -->
-            <ul class="nav nav-tabs" role="tablist">
-                <li ng-class="{active:isSelected(1)}" role="presentation">
-                    <a ng-click="select(1)" area-controls="all menu" role="tab">The menu</a>
-                </li>
-                <li ng-class="{active:isSelected(2)}" role="presentation">
-                    <a ng-click="select(2)" area-controls="appetisers" role="tab">Appetisers</a>
-                </li>
-                <li ng-class="{active:isSelected(3)}" role="presentation">
-                    <a ng-click="select(3)" area-controls="main" role="tab">Mains</a>
-                </li>
-                <li ng-class="{active:isSelected(4)}" role="presentation">
-                    <a ng-click="select(4)" area-controls="desserts" role="tab">Desserts</a>
-                </li>
-            </ul>
-            <div class="tab-content">
-                <ul class="media-list tab-pane fade in active">
-                    <li class="media" ng-repeat="dish in dishes | filter:filtText">
-                        <div class="media-left media-top">
-                            <a ui-sref="app.dishdetails({id: dish._id})" ng-click="returnDish($index)" data-toggle="tooltip" name="{{dish.name}}">
-                                <img class="media-object img-thumbnail" ng-src={{dish.image}} alt="Uthappizza">
+        <!-- tabs  -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li ng-class="{active:isSelected(1)}" role="presentation">
+                <a ng-click="select(1)" area-controls="all menu" role="tab">The menu</a>
+            </li>
+            <li ng-class="{active:isSelected(2)}" role="presentation">
+                <a ng-click="select(2)" area-controls="appetisers" role="tab">Appetisers</a>
+            </li>
+            <li ng-class="{active:isSelected(3)}" role="presentation">
+                <a ng-click="select(3)" area-controls="main" role="tab">Mains</a>
+            </li>
+            <li ng-class="{active:isSelected(4)}" role="presentation">
+                <a ng-click="select(4)" area-controls="desserts" role="tab">Desserts</a>
+            </li>
+        </ul>
+        <div class="tab-content">
+            <ul class="media-list tab-pane fade in active">
+                <li class="media" ng-repeat="dish in dishes | filter:filtText">
+                    <div class="media-left media-top">
+                        <a ui-sref="app.dishdetails({id: dish._id})" ng-click="returnDish($index)" data-toggle="tooltip" name="{{dish.name}}">
+                                <img class="media-object img-thumbnail" ng-src={{dish.image}} alt="{{dish.name}}">
                             </a>
-                        </div>
-                        <div class="media-body">
-                            <h2 class="media-heading">{{dish.name}}
+                    </div>
+                    <div class="media-body">
+                        <h2 class="media-heading">{{dish.name}}
                                 <span class="label label-danger">{{dish.label}}</span>
                                 <span class="badge">{{dish.price | currency}}</span>
                             </h2>
-                            <div class="comments offset">
+                        <div class="comments offset">
                             <a ng-click="showDetails = ! showDetails" class="comments">
                                 <h5>Dish Details 
                                     <span ng-class="{ 'display-class': ! showDetails }">&#9660;</span>
                                 </h5>
                             </a>
                             <div class="comments-div" ng-class="{ 'display-class': ! showDetails }">
-                                <p >{{dish.description}}</p>
+                                <p>{{dish.description}}</p>
                             </div>
                         </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </div>
