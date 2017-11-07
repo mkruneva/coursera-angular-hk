@@ -9,6 +9,8 @@ angular.module('confusionApp')
             return menuFactory.getDish(index);
         };
 
+        $scope.dish = $scope.returnDish(1);
+
     }])
 
     .controller('DishCommentController', [function() {
@@ -44,10 +46,10 @@ angular.module('confusionApp')
             console.log('Click!');
         };
 
-        $scope.returnDish = function(index) {
-            console.log(menuFactory.getDish(index));
-            return menuFactory.getDish(index);
-        };
+        // $scope.returnDish = function(index) {
+        //     console.log(menuFactory.getDish(index));
+        //     return menuFactory.getDish(index);
+        // };
 
         $scope.toggleDetails = function() {
             $scope.showDishDetails = !$scope.showDishDetails;

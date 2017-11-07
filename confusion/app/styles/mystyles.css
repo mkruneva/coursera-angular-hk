@@ -133,11 +133,6 @@ blockquote>q {
   cursor: pointer;
 }
 
-/* .media-left>a, .media-top>a  {
-  cursor: default;
-} */
-
-
 div.comments-div {
     max-height: 800px;
     overflow: hidden;

@@ -23,7 +23,7 @@
                 <ul class="media-list tab-pane fade in active">
                     <li class="media" ng-repeat="dish in dishes | filter:filtText">
                         <div class="media-left media-top">
-                            <a href="#/menu/{{dish._id}}" ng-click="returnDish($index)" data-toggle="tooltip" name="{{dish.name}}">
+                            <a ui-sref="app.dishdetails({id: dish._id})" ng-click="returnDish($index)" data-toggle="tooltip" name="{{dish.name}}">
                                 <img class="media-object img-thumbnail" ng-src={{dish.image}} alt="Uthappizza">
                             </a>
                         </div>
@@ -33,10 +33,9 @@
                                 <span class="badge">{{dish.price | currency}}</span>
                             </h2>
                             <p ng-show="showDishDetails">{{dish.description}}</p>
-                        </div>
-                        <div class="comments offset">
+                            <div class="comments offset">
                             <a ng-click="showDetails = ! showDetails" class="comments">
-                                <h5>Customer Comments &#9660;</h5>
+                                <h5>Dish Details &#9660;</h5>
                             </a>
                             <div class="comments-div" ng-class="{ 'display-class': ! showDetails }">
                                 <p>Sort By <span>(rating, comment or author)   </span>
@@ -51,6 +50,7 @@
                                     </blockquote>
                                 </div>
                             </div>
+                        </div>
                         </div>
                     </li>
                 </ul>
