@@ -18,7 +18,7 @@
 
 .jumbotron {
     margin: 0px auto;
-    padding: 70px 30px;
+    padding: 20px 30px;
     background: #7986CB;
     color: floralwhite;
 }
@@ -178,7 +178,8 @@ div.comments-div.display-class {
     display: inline-block;
     -webkit-transform: rotate(-180deg);
     transform: rotate(-180deg);
-    -webkit-transition-delay: 0.15s; /* Safari */
+    -webkit-transition-delay: 0.15s;
+    /* Safari */
     transition-delay: 0.15s;
     -webkit-transition-duration: 0.45s;
     transition-duration: 0.45s;
@@ -188,4 +189,16 @@ div.comments-div.display-class {
 .comments span.display-class {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+@media screen and (min-width: 768px) {
+    .jumbotron h1 {
+        font-size: 42px;
+    }
 }
