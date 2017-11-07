@@ -2,14 +2,12 @@
 
 angular.module('confusionApp')
 
-    .controller('DishDetailController', ['$scope', 'menuFactory', function($scope, menuFactory) {
+    .controller('DishDetailController', ['$scope', '$rootScope', 'menuFactory', function($scope, $rootScope, menuFactory) {
 
-        $scope.returnDish = function(index) {
-            console.log(menuFactory.getDish(index));
-            return menuFactory.getDish(index);
-        };
+        var dish = menuFactory.getDish($rootScope.dishId);
+        $scope.dish = dish;
 
-        $scope.dish = $scope.returnDish(1);
+        console.log($rootScope.dishId);
 
     }])
 
@@ -32,7 +30,7 @@ angular.module('confusionApp')
     }])
 
 
-    .controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory) {
+    .controller('MenuController', ['$scope', '$rootScope', 'menuFactory', function($scope, $rootScope, menuFactory) {
 
         $scope.tab = 1;
         $scope.dishName = '';
@@ -42,14 +40,11 @@ angular.module('confusionApp')
 
         $scope.dishes = menuFactory.getDishes();
 
-        $scope.clickMe = function() {
-            console.log('Click!');
+        $scope.returnDish = function(index) {
+            $rootScope.dishId = menuFactory.getDish(index)._id;
         };
 
-        // $scope.returnDish = function(index) {
-        //     console.log(menuFactory.getDish(index));
-        //     return menuFactory.getDish(index);
-        // };
+
 
         $scope.toggleDetails = function() {
             $scope.showDishDetails = !$scope.showDishDetails;
