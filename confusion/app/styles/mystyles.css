@@ -1,3 +1,13 @@
+* {
+  border-radius: 0;
+}
+
+.panel, .well, .label, .badge, .btn, 
+.nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover,
+.nav-tabs>li>a {
+  border-radius: 0;
+}
+
 .row-header {
     margin: 0px auto;
     padding: 0px 0px;
