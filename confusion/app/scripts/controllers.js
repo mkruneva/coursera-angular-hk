@@ -2,12 +2,9 @@
 
 angular.module('confusionApp')
 
-    .controller('DishDetailController', ['$scope', '$rootScope', 'menuFactory', function($scope, $rootScope, menuFactory) {
-
-        var dish = menuFactory.getDish($rootScope.dishId);
+    .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
+        var dish = menuFactory.getDish(parseInt($stateParams.id,10));
         $scope.dish = dish;
-
-        console.log($rootScope.dishId);
 
     }])
 
@@ -30,7 +27,7 @@ angular.module('confusionApp')
     }])
 
 
-    .controller('MenuController', ['$scope', '$rootScope', 'menuFactory', function($scope, $rootScope, menuFactory) {
+    .controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory) {
 
         $scope.tab = 1;
         $scope.dishName = '';
@@ -39,12 +36,6 @@ angular.module('confusionApp')
         $scope.showDishDetails = false;
 
         $scope.dishes = menuFactory.getDishes();
-
-        $scope.returnDish = function(index) {
-            $rootScope.dishId = menuFactory.getDish(index)._id;
-        };
-
-
 
         $scope.toggleDetails = function() {
             $scope.showDishDetails = !$scope.showDishDetails;
