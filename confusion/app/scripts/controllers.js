@@ -43,15 +43,6 @@ angular.module('confusionApp')
         $scope.channels = channels;
         $scope.invalidChannelSelection = false;
 
-        // $scope.sendFeedback = function() {
-        //     console.log('Sending ' + '\n' + 
-        //                 'first name: ' + $scope.feedback.firstName + '\n' + 
-        //                 'Last name: '+ $scope.feedback.lastName + '\n' +
-        //                 'email: ' + $scope.feedback.email + '\n' +
-        //                 'mychannel: ' + $scope.feedback.mychannel + '\n' );
-
-        // };
-
     }])
 
     .controller('FeedbackController', ['$scope', function($scope) {
@@ -76,7 +67,6 @@ angular.module('confusionApp')
     .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
 
         var dish = menuFactory.getDish(parseInt($stateParams.id, 10));
-
         $scope.dish = dish;
 
     }])
@@ -84,12 +74,12 @@ angular.module('confusionApp')
     .controller('DishCommentController', ['$scope', function($scope) {
 
         $scope.mycomment = { rating: 5, comment: "", author: "", date: "" };
+        $scope.mycomment.date = new Date().toISOString();
 
         $scope.submitComment = function() {
 
             $scope.mycomment.date = new Date().toISOString();
-            console.log($scope.mycomment);
-
+  
             $scope.dish.comments.push($scope.mycomment);
 
             $scope.commentForm.$setPristine();

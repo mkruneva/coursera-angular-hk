@@ -185,7 +185,7 @@ blockquote>q {
 }
 
 div.comments-div {
-    max-height: 800px;
+    max-height: 1200px;
     overflow: hidden;
     transition: 0.4s;
     transition-timing-function: ease-in-out;
