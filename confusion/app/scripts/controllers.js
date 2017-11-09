@@ -43,14 +43,14 @@ angular.module('confusionApp')
         $scope.channels = channels;
         $scope.invalidChannelSelection = false;
 
-        $scope.sendFeedback = function() {
-            console.log('Sending ' + '\n' + 
-                        'first name: ' + $scope.feedback.firstName + '\n' + 
-                        'Last name: '+ $scope.feedback.lastName + '\n' +
-                        'email: ' + $scope.feedback.email + '\n' +
-                        'mychannel: ' + $scope.feedback.mychannel + '\n' );
+        // $scope.sendFeedback = function() {
+        //     console.log('Sending ' + '\n' + 
+        //                 'first name: ' + $scope.feedback.firstName + '\n' + 
+        //                 'Last name: '+ $scope.feedback.lastName + '\n' +
+        //                 'email: ' + $scope.feedback.email + '\n' +
+        //                 'mychannel: ' + $scope.feedback.mychannel + '\n' );
 
-        };
+        // };
 
     }])
 
@@ -68,7 +68,7 @@ angular.module('confusionApp')
                 $scope.feedback = { mychannel: "", firstName: "", lastName: "", agree: false, email: "" };
                 $scope.feedback.mychannel = "";
                 $scope.feedbackForm.$setPristine();
-                console.log($scope.feedback);
+                //console.log($scope.feedback);
             }
         };
     }])
