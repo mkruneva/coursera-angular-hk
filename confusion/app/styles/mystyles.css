@@ -122,9 +122,18 @@ body {
     border-bottom: 1px ridge;
 }
 
-.user-comment-tab {
-    margin: 20px auto;
-    padding: 10px 0px;
+div.comment-preview {
+    zoom: 85%;
+    color: #777;
+}
+.comment-preview>h3 {
+    color: #555;
+}
+
+.btn-danger.submit {
+    background-color: #d9534f;
+    border-color: #d9534f;
+    background-image: none;
 }
 
 .affix {
