@@ -43,6 +43,14 @@ angular.module('confusionApp')
         $scope.channels = channels;
         $scope.invalidChannelSelection = false;
 
+        $scope.sendFeedback = function() {
+            console.log('Sending ' + '\n' + 
+                        'first name: ' + $scope.feedback.firstName + '\n' + 
+                        'Last name: '+ $scope.feedback.lastName + '\n' +
+                        'email: ' + $scope.feedback.email);
+
+        };
+
     }])
 
     .controller('FeedbackController', ['$scope', function($scope) {

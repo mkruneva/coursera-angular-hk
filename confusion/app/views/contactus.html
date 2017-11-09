@@ -1,16 +1,4 @@
 <div class="container" ng-controller="ContactController">
-<!--     <div class="row">
-        <div class="col-xs-12">
-            <ul class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Contact Us</li>
-            </ul>
-        </div>
-        <div class="col-xs-12">
-            <h3>Contact Us</h3>
-            <hr>
-        </div>
-    </div> -->
     <div class="row row-content">
         <div class="col-xs-12">
             <h3>Location Information</h3>
@@ -46,17 +34,17 @@
             <h3>Send us your Feedback</h3>
         </div>
         <div class="col-xs-12 col-sm-9">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" name="ffedbackForm" ng-submit="sendFeedback()" novalidate>
                 <div class="form-group">
                     <label for="firstname" class="col-sm-2 control-label">First Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name">
+                        <input type="text" class="form-control" id="firstname" name="firstname" placeholder="Enter First Name" ng-model="feedback.firstName" required>
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="lastname" class="col-sm-2 control-label">Last Name</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name">
+                        <input type="text" class="form-control" id="lastname" name="lastname" placeholder="Enter Last Name" ng-model="feedback.lastName" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -75,7 +63,7 @@
                 <div class="form-group">
                     <label for="emailid" class="col-sm-2 control-label">Email</label>
                     <div class="col-sm-10">
-                        <input type="email" class="form-control" id="emailid" name="emailid" placeholder="Email">
+                        <input type="email" class="form-control" id="emailid" name="emailid" placeholder="Email" ng-model="feedback.email" required>
                     </div>
                 </div>
                 <div class="form-group">
@@ -86,9 +74,8 @@
                         </label>
                     </div>
                     <div class="col-sm-3 col-sm-offset-1">
-                        <select class="form-control">
-                            <option>Tel.</option>
-                            <option>Email</option>
+                        <select class="form-control" ng-model="feedback.mychannel" ng-options="channel.value as channel.label for channel in channels">
+                            <option value="">Tel or Mail ?</option>
                         </select>
                     </div>
                 </div>
