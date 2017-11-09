@@ -118,17 +118,17 @@ body {
 
 .dish-comments-tab {
     margin: 0px auto;
-    padding: 10px 0px;
-    border-bottom: 1px ridge;
+   /*  padding: 10px 0px; */
+   /*  border-bottom: 1px ridge; */
 }
 
 div.comment-preview {
-    zoom: 85%;
+    /* margin-top: 10px; */
     color: #777;
 }
-.comment-preview>h3 {
+/* .comment-preview>h3 {
     color: #555;
-}
+} */
 
 .btn-danger.submit {
     background-color: #d9534f;
