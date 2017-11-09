@@ -5,25 +5,27 @@
             <h3 align=center>Our Lipsmacking Culinary Creations</h3>
         </div>
         <div class="col-xs-12 col-sm-9 col-sm-pull-3">
-            <li class="media">
-                <div class="media-left media-top">
-                    <a data-toggle="tooltip" name="{{dish.name}}">
+            <ul>
+                <li class="media">
+                    <div class="media-left media-top">
+                        <a data-toggle="tooltip" name="{{dish.name}}">
                                 <img class="media-object img-thumbnail" ng-src={{dish.image}} alt="{{dish.name}}">
                             </a>
-                </div>
-                <div class="media-body">
-                    <h2 class="media-heading">{{dish.name}}
+                    </div>
+                    <div class="media-body">
+                        <h2 class="media-heading">{{dish.name}}
                                 <span class="label label-danger">{{dish.label}}</span>
                                 <span class="badge">{{dish.price | currency}}</span>
                             </h2>
-                    <div class="comments offset">
-                        <div class="comments-div">
-                            <h4></h4>
-                            <p>{{dish.description}}</p>
+                        <div class="comments offset">
+                            <div class="comments-div">
+                                <h4></h4>
+                                <p>{{dish.description}}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </li>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="row row-content">
@@ -32,25 +34,27 @@
             <h3 align=center>This Month's Promotions</h3>
         </div>
         <div class="col-xs-12 col-sm-9">
-            <li class="media">
-                <div class="media-body">
-                    <h2 class="media-heading">{{promotion.name}}
+            <ul>
+                <li class="media">
+                    <div class="media-body">
+                        <h2 class="media-heading">{{promotion.name}}
                                 <span class="label label-danger">{{promotion.label}}</span>
                                 <span class="badge">{{promotion.price | currency}}</span>
                             </h2>
-                    <div class="comments offset">
-                        <div class="comments-div">
-                            <h4></h4>
-                            <p>{{promotion.description}}</p>
+                        <div class="comments offset">
+                            <div class="comments-div">
+                                <h4></h4>
+                                <p>{{promotion.description}}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="media-right">
-                    <a data-toggle="tooltip" name="{{promotion.name}}">
+                    <div class="media-right">
+                        <a data-toggle="tooltip" name="{{promotion.name}}">
                                 <img class="media-object img-thumbnail" ng-src={{promotion.image}} alt="{{promotion.name}}">
                             </a>
-                </div>
-            </li>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
     <div class="row row-content">
@@ -59,17 +63,19 @@
             <h3 align=center>Meet our Culinary Specialists</h3>
         </div>
         <div class="col-xs-12 col-sm-9 col-sm-pull-3">
-            <li class="media">
-                <div class="media-left media-top">
-                    <a data-toggle="tooltip" name="{{leader.name}}">
+            <ul>
+                <li class="media">
+                    <div class="media-left media-top">
+                        <a data-toggle="tooltip" name="{{leader.name}}">
                                 <img class="media-object img-thumbnail" ng-src={{leader.image}} alt="{{leader.name}}">
                         </a>
-                </div>
-                <div class="media-body">
-                    <h2 class="media-heading">{{leader.name}} <small><i>{{leader.designation}}</i></small></h2>
-                    <p>{{leader.description}}</p>
-                </div>
-            </li>
+                    </div>
+                    <div class="media-body">
+                        <h2 class="media-heading">{{leader.name}} <small><i>{{leader.designation}}</i></small></h2>
+                        <p>{{leader.description}}</p>
+                    </div>
+                </li>
+            </ul>
         </div>
     </div>
 </div>

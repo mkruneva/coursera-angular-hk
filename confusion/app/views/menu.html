@@ -19,7 +19,7 @@
             <ul class="media-list tab-pane fade in active">
                 <li class="media" ng-repeat="dish in dishes | filter:filtText">
                     <div class="media-left media-top">
-                        <a ui-sref="app.dishdetails({id: dish._id})" ng-click="returnDish($index)" data-toggle="tooltip" name="{{dish.name}}">
+                        <a ui-sref="app.dishdetails({id: dish._id})" data-toggle="tooltip" name="{{dish.name}}" title="{{dish.name}} more details" class="red-tooltip">
                                 <img class="media-object img-thumbnail" ng-src={{dish.image}} alt="{{dish.name}}">
                             </a>
                     </div>
@@ -28,13 +28,13 @@
                                 <span class="label label-danger">{{dish.label}}</span>
                                 <span class="badge">{{dish.price | currency}}</span>
                             </h2>
-                        <div class="comments offset">
-                            <a ng-click="showDetails = ! showDetails" class="comments">
+                        <div>
+                            <a ng-click="showDetails = ! showDetails" class="more-info">
                                 <h5>Dish Details 
                                     <span ng-class="{ 'display-class': ! showDetails }">&#9660;</span>
                                 </h5>
                             </a>
-                            <div class="comments-div" ng-class="{ 'display-class': ! showDetails }">
+                            <div class="details-div" ng-class="{ 'display-class': ! showDetails }">
                                 <p>{{dish.description}}</p>
                             </div>
                         </div>

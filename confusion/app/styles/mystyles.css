@@ -116,6 +116,17 @@ body {
     padding: 10px;
 }
 
+.dish-comments-tab {
+    margin: 0px auto;
+    padding: 10px 0px;
+    border-bottom: 1px ridge;
+}
+
+.user-comment-tab {
+    margin: 20px auto;
+    padding: 10px 0px;
+}
+
 .affix {
     top: 100px;
 }
@@ -174,7 +185,7 @@ blockquote>q {
 }
 
 div.comments-div {
-    max-height: 150px;
+    max-height: 800px;
     overflow: hidden;
     transition: 0.4s;
     transition-timing-function: ease-in-out;
@@ -184,7 +195,29 @@ div.comments-div.display-class {
     max-height: 0px;
 }
 
-.comments span {
+div.details-div {
+    max-height: 500px;
+    overflow: hidden;
+    transition: 0.4s;
+    transition-timing-function: ease-in-out;
+}
+
+div.details-div.display-class {
+    max-height: 0px;
+}
+
+.more-info {
+   cursor: pointer;
+   text-decoration: none;
+}
+
+.more-info,
+.more-info:hover,
+.more-info:active {
+   text-decoration: none;
+}
+
+.more-info span {
     display: inline-block;
     -webkit-transform: rotate(-180deg);
     transform: rotate(-180deg);
@@ -196,7 +229,7 @@ div.comments-div.display-class {
     transition-timing-function: ease-in-out;
 }
 
-.comments span.display-class {
+.more-info span.display-class {
     -webkit-transform: rotate(0deg);
     transform: rotate(0deg);
 }
@@ -209,6 +242,19 @@ div.comments-div.display-class {
 .logo {
   float: right;
 }
+
+.padding20 {
+  padding-top: 20px;
+}
+
+ul.media-list {
+  list-style-type:none;
+}
+
+/* li.media {
+  display: none;
+} */
+
 
 @media screen and (min-width: 768px) {
     .jumbotron h1 {
