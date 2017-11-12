@@ -111,10 +111,16 @@ angular.module('confusionApp')
             return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
         }
 
-        var randomDish = getRandomInt(0, menuFactory.getDishes().length);
+        var randomDish = getRandomInt(0, 4);
+        // var randomDish = getRandomInt(0, menuFactory.getDishes().length); // Implement this when taking data from server
         var randomChef = getRandomInt(0, corporateFactory.getLeaders().length);
 
-        $scope.dish = menuFactory.getDish(randomDish);
+        $scope.dish = {};
+        menuFactory.getDish(randomDish)
+        .then(
+            function(response) {
+                $scope.dish = response.data;
+            });
         $scope.promotion = menuFactory.getPromotion(0);
         $scope.leader = corporateFactory.getLeader(randomChef);
     }])
