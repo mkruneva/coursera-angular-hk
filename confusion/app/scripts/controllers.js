@@ -8,17 +8,15 @@ angular.module('confusionApp')
         $scope.filtText = '';
         $scope.showDetails = false;
 
-        $scope.dishes = menuFactory.getDishes();
-        $scope.dishesFromServer = {};
+        // $scope.dishes = menuFactory.getDishes();
 
-        menuFactory.getDishesFromServer()
+        $scope.dishes = {};
+        menuFactory.getDishes()
             .then(
                 function(response) {
-                    $scope.dishesFromServer = response.data[0];
-                    console.log($scope.dishesFromServer);
+                    $scope.dishes = response.data;
+                    console.log($scope.dishes);
                 });
-
-
 
         $scope.select = function(setTab) {
             $scope.tab = setTab;
@@ -41,6 +39,19 @@ angular.module('confusionApp')
         $scope.toggleDetails = function() {
             $scope.showDetails = !$scope.showDetails;
         };
+    }])
+
+    .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
+
+        $scope.dish = {};
+
+        menuFactory.getDish(parseInt($stateParams.id, 10))
+        .then(
+                function(response) {
+                    $scope.dish = response.data;
+                });
+
+
     }])
 
     .controller('ContactController', ['$scope', function($scope) {
@@ -73,12 +84,7 @@ angular.module('confusionApp')
         };
     }])
 
-    .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
-
-        var dish = menuFactory.getDish(parseInt($stateParams.id, 10));
-        $scope.dish = dish;
-
-    }])
+    
 
     .controller('DishCommentController', ['$scope', function($scope) {
 

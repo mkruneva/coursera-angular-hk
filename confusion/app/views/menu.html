@@ -1,9 +1,5 @@
 <div class="container">
     <div class="row row-content" ng-controller="MenuController">
-        <div>
-            <h1>Server communication</h1>
-            <h2>{{dishesFromServer.name}}</h2>
-        </div>
         <!-- tabs  -->
         <ul class="nav nav-tabs" role="tablist">
             <li ng-class="{active:isSelected(1)}" role="presentation">
@@ -23,7 +19,7 @@
             <ul class="media-list tab-pane fade in active">
                 <li class="media" ng-repeat="dish in dishes | filter:filtText">
                     <div class="media-left media-top">
-                        <a ui-sref="app.dishdetails({id: dish._id})" data-toggle="tooltip" name="{{dish.name}}" title="{{dish.name}} more details">
+                        <a ui-sref="app.dishdetails({id: dish.id})" data-toggle="tooltip" name="{{dish.name}}" title="{{dish.name}} more details">
                                 <img class="media-object img-thumbnail" ng-src={{dish.image}} alt="{{dish.name}}">
                             </a>
                     </div>
