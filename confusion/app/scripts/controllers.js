@@ -9,6 +9,15 @@ angular.module('confusionApp')
         $scope.showDetails = false;
 
         $scope.dishes = menuFactory.getDishes();
+        $scope.dishesFromServer = {};
+
+        menuFactory.getDishesFromServer()
+            .then(
+                function(response) {
+                    $scope.dishesFromServer = response.data[0];
+                    console.log($scope.dishesFromServer);
+                });
+
 
 
         $scope.select = function(setTab) {
@@ -79,7 +88,7 @@ angular.module('confusionApp')
         $scope.submitComment = function() {
 
             $scope.mycomment.date = new Date().toISOString();
-  
+
             $scope.dish.comments.push($scope.mycomment);
 
             $scope.commentForm.$setPristine();

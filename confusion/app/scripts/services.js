@@ -182,16 +182,20 @@ angular.module('confusionApp')
 
         this.getDishes = function() {
 
-            var dishesFromServer = $http.get(baseURL + 'dishes');
-            console.log('dishesFromServer is', dishesFromServer);
             return dishes;
 
+        };
+        this.getDishesFromServer = function () {
+          var dishesFromServer = $http.get(baseURL + 'dishes');
+          console.log('dishesFromServer is', dishesFromServer);
+
+          return dishesFromServer;
         };
 
         this.getDish = function(index) {
 
-            var dishFromServer = $http.get(baseURL + 'dishes/' + index);
-            console.log('dishFromServer is', dishFromServer);
+            // var dishFromServer = $http.get(baseURL + 'dishes/' + index);
+            // console.log('dishFromServer is', dishFromServer);
 
             return dishes[index];
         };

@@ -1,5 +1,9 @@
 <div class="container">
     <div class="row row-content" ng-controller="MenuController">
+        <div>
+            <h1>Server communication</h1>
+            <h2>{{dishesFromServer.name}}</h2>
+        </div>
         <!-- tabs  -->
         <ul class="nav nav-tabs" role="tablist">
             <li ng-class="{active:isSelected(1)}" role="presentation">
