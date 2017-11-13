@@ -1,31 +1,36 @@
 <div class="container" ng-controller="IndexController">
     <div class="row row-content">
-        <div class="col-xs-12 col-sm-3 col-sm-push-9">
-            <p style="padding:20px;"></p>
-            <h3 align=center>Our Lipsmacking Culinary Creations</h3>
+        <div class="col-hs-12 error-message" ng-if="!showDish">
+            <h3>{{message}}</h3>
         </div>
-        <div class="col-xs-12 col-sm-9 col-sm-pull-3">
-            <ul>
-                <li class="media">
-                    <div class="media-left media-top">
-                        <a data-toggle="tooltip" name="{{dish.name}}">
+        <div ng-if="showDish">
+            <div class="col-xs-12 col-sm-3 col-sm-push-9">
+                <p style="padding:20px;"></p>
+                <h3 align=center>Our Lipsmacking Culinary Creations</h3>
+            </div>
+            <div class="col-xs-12 col-sm-9 col-sm-pull-3">
+                <ul>
+                    <li class="media">
+                        <div class="media-left media-top">
+                            <a data-toggle="tooltip" name="{{dish.name}}">
                                 <img class="media-object img-thumbnail" ng-src={{dish.image}} alt="{{dish.name}}">
                             </a>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="media-heading">{{dish.name}}
+                        </div>
+                        <div class="media-body">
+                            <h2 class="media-heading">{{dish.name}}
                                 <span class="label label-danger">{{dish.label}}</span>
                                 <span class="badge">{{dish.price | currency}}</span>
                             </h2>
-                        <div class="comments offset">
-                            <div class="comments-div">
-                                <h4></h4>
-                                <p>{{dish.description}}</p>
+                            <div class="comments offset">
+                                <div class="comments-div">
+                                    <h4></h4>
+                                    <p>{{dish.description}}</p>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-            </ul>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
     <div class="row row-content">

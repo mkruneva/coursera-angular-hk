@@ -1,5 +1,8 @@
 <div class="container" ng-controller="DishDetailController">
-    <div class="row row-content">
+    <div class="col-hs-12 error-message" ng-if="!showDish">
+            <h3>{{message}}</h3>
+    </div>
+    <div class="row row-content" ng-if="showDish">
         <ul class="nav nav-tabs" role="tablist">
             <li class="active" role="presentation">
                 <a area-controls="all menu" role="tab">Dish Details</a>
