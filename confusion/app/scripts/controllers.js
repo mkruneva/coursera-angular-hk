@@ -60,6 +60,25 @@ angular.module('confusionApp')
 
     }])
 
+    .controller('DishCommentController', ['$scope', 'menuFactory', function($scope, menuFactory) {
+
+        $scope.mycomment = { rating: 5, comment: "", author: "", date: "" };
+        $scope.mycomment.date = new Date().toISOString();
+
+        $scope.submitComment = function() {
+
+            $scope.mycomment.date = new Date().toISOString();
+
+            $scope.dish.comments.push($scope.mycomment);
+
+            menuFactory.getDishes().update({id:$scope.dish.id}, $scope.dish);
+
+            $scope.commentForm.$setPristine();
+
+            $scope.mycomment = { rating: 5, comment: "", author: "", date: "" };
+        };
+    }])
+
     .controller('ContactController', ['$scope', function($scope) {
 
         $scope.feedback = { mychannel: "", firstName: "", lastName: "", agree: false, email: "" };
@@ -92,22 +111,7 @@ angular.module('confusionApp')
 
     
 
-    .controller('DishCommentController', ['$scope', function($scope) {
-
-        $scope.mycomment = { rating: 5, comment: "", author: "", date: "" };
-        $scope.mycomment.date = new Date().toISOString();
-
-        $scope.submitComment = function() {
-
-            $scope.mycomment.date = new Date().toISOString();
-
-            $scope.dish.comments.push($scope.mycomment);
-
-            $scope.commentForm.$setPristine();
-
-            $scope.mycomment = { rating: 5, comment: "", author: "", date: "" };
-        };
-    }])
+    
 
     .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
 
