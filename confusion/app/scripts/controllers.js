@@ -139,7 +139,18 @@ angular.module('confusionApp')
             });
 
         
-        $scope.promotion = menuFactory.getPromotion(0);
+        $scope.promotion = menuFactory.getPromotion().get({id:0})
+        .$promise.then(
+            function(response) {
+                $scope.promotion = response;
+                //$scope.showDish = true;
+            },
+            function(response) {
+                $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
+            });
+
+
+
         $scope.leader = corporateFactory.getLeader(randomChef);
     }])
 
