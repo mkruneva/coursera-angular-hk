@@ -7,9 +7,18 @@ angular.module('confusionApp')
         $scope.tab = 1;
         $scope.filtText = '';
         $scope.showDetails = false;
-        $scope.showMenu = true;
+        $scope.showMenu = false;
         $scope.message = 'Loading...';
-        $scope.dishes = menuFactory.getDishes().query();
+
+        menuFactory.getDishes().query(
+            function(response) {
+                $scope.dishes = response;
+                $scope.showMenu = true;
+            },
+            function(response) {
+                $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
+            }
+        );
 
         $scope.select = function(setTab) {
             $scope.tab = setTab;
@@ -36,9 +45,18 @@ angular.module('confusionApp')
 
     .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
 
-        $scope.showDish = true;
+        $scope.showDish = false;
         $scope.message = 'Loading...';
-        $scope.dish = menuFactory.getDishes().get({id:parseInt($stateParams.id, 10)});
+        $scope.dish = 
+        menuFactory.getDishes().get({id:parseInt($stateParams.id, 10)})
+        .$promise.then(
+            function(response) {
+                $scope.dish = response;
+                $scope.showDish = true;
+            },
+            function(response) {
+                $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
+            });
 
     }])
 
@@ -93,7 +111,7 @@ angular.module('confusionApp')
 
     .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
 
-        $scope.showDish = true;
+        $scope.showDish = false;
         $scope.message = 'Loading...';
 
         function getRandomInt(min, max) {
@@ -106,18 +124,17 @@ angular.module('confusionApp')
         // var randomDish = getRandomInt(0, menuFactory.getDishes().length); // Implement this when taking data from server
         var randomChef = getRandomInt(0, corporateFactory.getLeaders().length);
 
-        $scope.dish = menuFactory.getDishes().get({id:randomDish});
+        $scope.dish = menuFactory.getDishes().get({id:randomDish})
+        .$promise.then(
+            function(response) {
+                $scope.dish = response;
+                $scope.showDish = true;
+            },
+            function(response) {
+                $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
+            });
 
-        // menuFactory.getDish(randomDish)
-        // .then(
-        //     function(response) {
-        //         $scope.showDish = true;
-        //         $scope.dish = response.data;
-        //     },
-        //     function(response) {
-        //         $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
-        //     }
-        //     );
+        
         $scope.promotion = menuFactory.getPromotion(0);
         $scope.leader = corporateFactory.getLeader(randomChef);
     }])

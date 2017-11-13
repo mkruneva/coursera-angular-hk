@@ -17,7 +17,6 @@ angular.module('confusionApp')
 
         this.getDishes = function() {
 
-            // var dishes = $http.get(baseURL + 'dishes');
             var dishes = $resource(baseURL + 'dishes/:id', null, {update:{method: 'PUT'}});
             return dishes;
 
