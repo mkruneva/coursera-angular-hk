@@ -47,16 +47,16 @@ angular.module('confusionApp')
 
         $scope.showDish = false;
         $scope.message = 'Loading...';
-        $scope.dish = 
-        menuFactory.getDishes().get({id:parseInt($stateParams.id, 10)})
-        .$promise.then(
-            function(response) {
-                $scope.dish = response;
-                $scope.showDish = true;
-            },
-            function(response) {
-                $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
-            });
+        $scope.dish =
+            menuFactory.getDishes().get({ id: parseInt($stateParams.id, 10) })
+            .$promise.then(
+                function(response) {
+                    $scope.dish = response;
+                    $scope.showDish = true;
+                },
+                function(response) {
+                    $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
+                });
 
     }])
 
@@ -71,7 +71,7 @@ angular.module('confusionApp')
 
             $scope.dish.comments.push($scope.mycomment);
 
-            menuFactory.getDishes().update({id:$scope.dish.id}, $scope.dish);
+            menuFactory.getDishes().update({ id: $scope.dish.id }, $scope.dish);
 
             $scope.commentForm.$setPristine();
 
@@ -109,9 +109,9 @@ angular.module('confusionApp')
         };
     }])
 
-    
 
-    
+
+
 
     .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
 
@@ -125,37 +125,55 @@ angular.module('confusionApp')
         }
 
         var randomDish = getRandomInt(0, 4);
-        // var randomDish = getRandomInt(0, menuFactory.getDishes().length); // Implement this when taking data from server
-        var randomChef = getRandomInt(0, corporateFactory.getLeaders().length);
+        var randomChef = getRandomInt(0, 4);
+        // var randomDish = getRandomInt(0, menuFactory.getDishes().length); 
+        // Implement this for dish and chef when taking data from server
 
-        $scope.dish = menuFactory.getDishes().get({id:randomDish})
-        .$promise.then(
-            function(response) {
-                $scope.dish = response;
-                $scope.showDish = true;
-            },
-            function(response) {
-                $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
-            });
-
-        
-        $scope.promotion = menuFactory.getPromotion().get({id:0})
-        .$promise.then(
-            function(response) {
-                $scope.promotion = response;
-                //$scope.showDish = true;
-            },
-            function(response) {
-                $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
-            });
+        $scope.dish = menuFactory.getDishes().get({ id: randomDish })
+            .$promise.then(
+                function(response) {
+                    $scope.dish = response;
+                    $scope.showDish = true;
+                },
+                function(response) {
+                    $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
+                }
+            );
 
 
+        $scope.promotion = menuFactory.getPromotion().get({ id: 0 })
+            .$promise.then(
+                function(response) {
+                    $scope.promotion = response;
+                    //$scope.showDish = true;  // implement this for promotion
+                },
+                function(response) {
+                    $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
+                }
+            );
 
-        $scope.leader = corporateFactory.getLeader(randomChef);
+        $scope.leader = corporateFactory.getLeaders().get({ id: randomChef })
+            .$promise.then(
+                function(response) {
+                    $scope.leader = response;
+                    //$scope.showDish = true;   // implement this for leader
+                },
+                function(response) {
+                    $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
+                }
+            );
     }])
 
     .controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory) {
-        $scope.leadership = corporateFactory.getLeaders();
+        $scope.leadership = corporateFactory.getLeaders().query(
+            function(response) {
+                $scope.leader = response;
+                //$scope.showDish = true;   // implement this for leader
+            },
+            function(response) {
+                $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
+            }
+        );
     }])
 
 ;
