@@ -7,20 +7,9 @@ angular.module('confusionApp')
         $scope.tab = 1;
         $scope.filtText = '';
         $scope.showDetails = false;
-        $scope.showMenu = false;
+        $scope.showMenu = true;
         $scope.message = 'Loading...';
-        $scope.dishes = {};
-
-        menuFactory.getDishes()
-            .then(
-                function(response) {
-                    $scope.showMenu = true;
-                    $scope.dishes = response.data;
-                },
-                function(response) {
-                    $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
-                }
-            );
+        $scope.dishes = menuFactory.getDishes().query();
 
         $scope.select = function(setTab) {
             $scope.tab = setTab;
@@ -47,21 +36,9 @@ angular.module('confusionApp')
 
     .controller('DishDetailController', ['$scope', '$stateParams', 'menuFactory', function($scope, $stateParams, menuFactory) {
 
-        $scope.showDish = false;
+        $scope.showDish = true;
         $scope.message = 'Loading...';
-        $scope.dish = {};
-
-        menuFactory.getDish(parseInt($stateParams.id, 10))
-        .then(
-                function(response) {
-                    $scope.showDish = true;
-                    $scope.dish = response.data;
-                },
-                function(response) {
-                    $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
-                }
-                );
-
+        $scope.dish = menuFactory.getDishes().get({id:parseInt($stateParams.id, 10)});
 
     }])
 
@@ -116,9 +93,8 @@ angular.module('confusionApp')
 
     .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
 
-        $scope.showDish = false;
+        $scope.showDish = true;
         $scope.message = 'Loading...';
-        $scope.dish = {};
 
         function getRandomInt(min, max) {
             min = Math.ceil(min);
@@ -130,16 +106,18 @@ angular.module('confusionApp')
         // var randomDish = getRandomInt(0, menuFactory.getDishes().length); // Implement this when taking data from server
         var randomChef = getRandomInt(0, corporateFactory.getLeaders().length);
 
-        menuFactory.getDish(randomDish)
-        .then(
-            function(response) {
-                $scope.showDish = true;
-                $scope.dish = response.data;
-            },
-            function(response) {
-                $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
-            }
-            );
+        $scope.dish = menuFactory.getDishes().get({id:randomDish});
+
+        // menuFactory.getDish(randomDish)
+        // .then(
+        //     function(response) {
+        //         $scope.showDish = true;
+        //         $scope.dish = response.data;
+        //     },
+        //     function(response) {
+        //         $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
+        //     }
+        //     );
         $scope.promotion = menuFactory.getPromotion(0);
         $scope.leader = corporateFactory.getLeader(randomChef);
     }])
