@@ -116,6 +116,9 @@ angular.module('confusionApp')
     .controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory) {
 
         $scope.showDish = false;
+        $scope.showPromotion = false;
+        $scope.showLeader = false;
+        $scope.showLeaders = false;
         $scope.message = 'Loading...';
 
         function getRandomInt(min, max) {
@@ -145,7 +148,7 @@ angular.module('confusionApp')
             .$promise.then(
                 function(response) {
                     $scope.promotion = response;
-                    //$scope.showDish = true;  // implement this for promotion
+                    $scope.showPromotion = true;  // promotion
                 },
                 function(response) {
                     $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
@@ -156,7 +159,7 @@ angular.module('confusionApp')
             .$promise.then(
                 function(response) {
                     $scope.leader = response;
-                    //$scope.showDish = true;   // implement this for leader
+                    $scope.showLeader = true;   // leader
                 },
                 function(response) {
                     $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
@@ -168,7 +171,7 @@ angular.module('confusionApp')
         $scope.leadership = corporateFactory.getLeaders().query(
             function(response) {
                 $scope.leader = response;
-                //$scope.showDish = true;   // implement this for leader
+                $scope.showLeaders = true;   // leaders
             },
             function(response) {
                 $scope.message = 'Error: ' + response.status + '  ' + response.statusText;

@@ -34,24 +34,29 @@
         </div>
     </div>
     <div class="row row-content">
-        <div class="col-xs-12">
-            <h2>Corporate Leadership</h2>
-            <ul class="media-list">
-                <li class="media" ng-repeat="leader in leadership">
-                    <div class="media-left media-top">
-                        <a data-toggle="tooltip" name="{{leader.name}}">
+        <div class="col-xs-12 error-message" ng-if="!showLeaders">
+            <h3>{{message}}</h3>
+        </div>
+        <div ng-if="showLeaders">
+            <div class="col-xs-12">
+                <h2>Corporate Leadership</h2>
+                <ul class="media-list">
+                    <li class="media" ng-repeat="leader in leadership">
+                        <div class="media-left media-top">
+                            <a data-toggle="tooltip" name="{{leader.name}}">
                                 <img class="media-object img-thumbnail" ng-src={{leader.image}} alt="{{leader.name}}">
                         </a>
-                    </div>
-                    <div class="media-body">
-                        <h2 class="media-heading">{{leader.name}} <small><i>{{leader.designation}}</i></small></h2>
-                        <p>{{leader.description}}</p>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <div class="col-xs-12 col-sm-3">
-            <p style="padding:20px;"></p>
+                        </div>
+                        <div class="media-body">
+                            <h2 class="media-heading">{{leader.name}} <small><i>{{leader.designation}}</i></small></h2>
+                            <p>{{leader.description}}</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="col-xs-12 col-sm-3">
+                <p style="padding:20px;"></p>
+            </div>
         </div>
     </div>
     <div class="row row-content">

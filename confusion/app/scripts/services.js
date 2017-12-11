@@ -2,6 +2,7 @@
 
 angular.module('confusionApp')
     .constant('baseURL', 'http://localhost:3000/')
+    
     .service('menuFactory', ['$resource','baseURL', function($resource, baseURL) {
 
         this.getDishes = function() {
@@ -19,10 +20,9 @@ angular.module('confusionApp')
         };
     }])
 
-    .factory('corporateFactory', [ '$resource', 'baseURL', function($resource, baseURL) {
+    .factory('corporateFactory', ['$resource', 'baseURL', function($resource, baseURL) {
 
         var corpfac = {};
-
 
         corpfac.getLeaders = function() {
             var leadership = $resource(baseURL + 'leadership/:id', null, {get: {method:'GET'}}); 
