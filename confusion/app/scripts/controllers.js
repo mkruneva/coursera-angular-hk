@@ -2,6 +2,13 @@
 
 angular.module('confusionApp')
 
+    .controller('TestController', ['$scope', function ($scope) {
+        $scope.sum = function() {
+            $scope.z = $scope.x + $scope.y;
+        };
+
+    }])
+
     .controller('MenuController', ['$scope', 'menuFactory', function($scope, menuFactory) {
 
         $scope.tab = 1;
@@ -148,7 +155,7 @@ angular.module('confusionApp')
             .$promise.then(
                 function(response) {
                     $scope.promotion = response;
-                    $scope.showPromotion = true;  // promotion
+                    $scope.showPromotion = true; // promotion
                 },
                 function(response) {
                     $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
@@ -159,7 +166,7 @@ angular.module('confusionApp')
             .$promise.then(
                 function(response) {
                     $scope.leader = response;
-                    $scope.showLeader = true;   // leader
+                    $scope.showLeader = true; // leader
                 },
                 function(response) {
                     $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
@@ -171,7 +178,7 @@ angular.module('confusionApp')
         $scope.leadership = corporateFactory.getLeaders().query(
             function(response) {
                 $scope.leader = response;
-                $scope.showLeaders = true;   // leaders
+                $scope.showLeaders = true; // leaders
             },
             function(response) {
                 $scope.message = 'Error: ' + response.status + '  ' + response.statusText;
