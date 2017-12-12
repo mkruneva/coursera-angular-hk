@@ -44,10 +44,49 @@ describe('MenuController Test', function() {
             expect($scope.message).toBeDefined();
         });
     });
-
-
-    
 });
+
+describe('getDishes Test', function() {
+    var $httpBackend;
+    var $rootScope;
+    var menuFactory;
+    var getStatusHandler;
+
+    beforeEach(module('confusionApp'));
+    beforeEach(inject(function(_$httpBackend_, _$rootScope_, _menuFactory_) {
+        $httpBackend = _$httpBackend_;
+        $rootScope = _$rootScope_;
+        menuFactory = _menuFactory_;
+
+        getStatusHandler = $httpBackend.when('GET', 'http://localhost:3000/dishes').respond(200, [{
+                "id": 0,
+                "name": "Uthapizza",
+                "image": "images/uthapizza.png",
+                "category": "mains",
+                "label": "Hot",
+                "price": "4.99",
+                "description": "A",
+                "comments": [{}]
+            },
+            {
+                "id": 1,
+                "name": "Zucchipakoda",
+                "image": "images/zucchipakoda.png",
+                "category": "mains",
+                "label": "New",
+                "price": "4.99",
+                "description": "A",
+                "comments": [{}]
+            }
+        ]);     
+
+    }));
+
+
+
+});
+
+
 
 
 
