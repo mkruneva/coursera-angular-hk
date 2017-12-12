@@ -39,6 +39,7 @@ describe('MenuController Test', function() {
     it('should have showDetails as false', function() {
         expect(scope.showDetails).toBeFalsy();
     });
+    // some issues fetching data from xhr - check angular mocks setup
     // it('should create "dishes" with 2 dishes fetched from xhr', function() {
     //     expect(scope.showMenu).toBeTruthy();
     //     expect(scope.dishes).toBeDefined();
